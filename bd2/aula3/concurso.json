@@ -1,0 +1,226 @@
+{
+    "questoes": [
+        {
+            "numQuest": 1,
+            "topico": ["HTML", "JAVASCRIPT"],
+            "enunciado": "Um objeto de elemento na DOM HTML possui certos métodos ou propriedades. Nesse contexto, assinale a alternativa que indica corretamente o método ou atributo que atribui ou retorna o conteúdo de um elemento HTML.",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "getElementById()"
+                },
+                {
+                    "alt": "b", "op": "HTMLcontent()"
+                },
+                {
+                    "alt": "c", "op": "contentHTML"
+                },
+                {
+                    "alt": "d", "op": "innerHTML"
+                },
+                {
+                    "alt": "e", "op": "setHTML()"
+                }
+            ],
+            "resposta": 3
+        },
+        {
+            "numQuest": 2,
+            "topico": "SCRUM",
+            "enunciado": "O FDD (Feature Driven Development) é uma metodologia de desenvolvimento ágil dirigido a:",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "Entregas."
+                },
+                {
+                    "alt": "b", "op": "Funcionalidades."
+                },
+                {
+                    "alt": "c", "op": "Recursos."
+                },
+                {
+                    "alt": "d", "op": "Projetos."
+                },
+                {
+                    "alt": "e", "op": "Processos."
+                }
+            ],
+            "resposta": 1
+        },
+        {
+            "numQuest": 3,
+            "topico": "HTML",
+            "enunciado": "Na linguagem de programação HTML, quando queremos dar uma ênfase diferente a um trecho de texto, podemos utilizar as marcações de ênfase. Podemos deixar o texto com uma ênfase acentuada com a tag: ",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "<strong>."
+                },
+                {
+                    "alt": "b", "op": "<small>."
+                },
+                {
+                    "alt": "c", "op": "<img>."
+                },
+                {
+                    "alt": "d", "op": "<em>."
+                },
+                {
+                    "alt": "e", "op": "<body>."
+                }
+            ],
+            "resposta": 3
+        },
+        {
+            "numQuest": 4,
+            "topico": ["HTML", "CSS"],
+            "enunciado": "Com relação a programação e desenvolvimento de sistemas, julgue o item a seguir. \n\nCSS é um código separado da HTML que pode afetar a aparência das tags em uma única página ou em todo um site da Web.",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "Certo"
+                },
+                {
+                    "alt": "b", "op": "Errado"
+                }
+            ],
+            "resposta": 1
+        },
+        {
+            "numQuest": 5,
+            "topico": "CSS",
+            "enunciado": "Para que, ao selecionar os conteúdos textuais do corpo da página o fundo do conteúdo selecionado fique amarelo, a lacuna I deve ser corretamente preenchida pela instrução CSS ",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "::selection {background: yellow}"
+                },
+                {
+                    "alt": "b", "op": "body:selection {background: yellow}"
+                },
+                {
+                    "alt": "c", "op": "::selection {background: #339900}"
+                },
+                {
+                    "alt": "d", "op": "body::content-selection {background: #F2FF14}."
+                },
+                {
+                    "alt": "e", "op": "::content-selection {background: yellow}."
+                }
+            ],
+            "resposta": 0
+        },
+        {
+            "numQuest": 6,
+            "topico": "CSS",
+            "enunciado": "Numa codificação CSS, a propriedade z-index refere-se ",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "à ordem de um elemento numa pilha."
+                },
+                {
+                    "alt": "b", "op": "à ordenação crescente de uma lista de elementos."
+                },
+                {
+                    "alt": "c", "op": "nà ordenação decrescente de uma lista de elementos."
+                },
+                {
+                    "alt": "d", "op": "ao valor zero em medidas de altura."
+                },
+                {
+                    "alt": "e", "op": "ao valor zero em medidas de largura."
+                }
+            ],
+            "resposta": 0
+        },
+        {
+            "numQuest": 7,
+            "topico": ["HTML", "PHP"],
+            "enunciado": "AO PHP é uma linguagem de script, open source, amplamente utilizada por diversos desenvolvedores, podendo ser embutida dentro de códigos HTML, muito utilizados na construção de sites. Sobre essa linguagem, marque V para as afirmativas verdadeiras e F para as falsas.\n\n( ) Comentários de linha são precedidos dos caracteres -- enquanto comentários de bloco são demarcados pelo conjunto de caracteres /* */.\n( ) Tags curtas como, por exemplo, podem ser desabilitadas através da diretiva short_open_tag no arquivo de configuração php.ini.\n( ) As funções call_user_func() e usort() não permitem a utilização de funções de callback definidas pelo usuário como parâmetro.\n( ) O PHP não obriga a definição explícita de tipo na declaração de variáveis, já que é determinado pelo contexto em que ela é utilizada. ",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "V ,V, F, F."
+                },
+                {
+                    "alt": "b", "op": "V, F, V, F."
+                },
+                {
+                    "alt": "c", "op": "F, V, F, V."
+                },
+                {
+                    "alt": "d", "op": "F, F, V, V."
+                },
+                {
+                    "alt": "e", "op": "F, F, F, V."
+                }
+            ],
+            "resposta": 2
+        },
+        {
+            "numQuest": 8,
+            "topico": "SISTEMAS OPERACIONAIS",
+            "enunciado": "Relacione a Coluna 1 à Coluna 2, associando os sistemas operacionais com os respectivos sistemas de arquivos que podem ser utilizados.\n\nColuna 1\n1. Linux Ubuntu 20.\n2. Microsoft Windows 10.\n\nColuna 2\n( ) NTFS.\n( ) FAT32.\n( ) EXT4.\n\nA ordem correta de preenchimento dos parênteses, de cima para baixo, é:",
+            "alternativas": [
+                {
+                    "alt": "a", "op": "1 – 1 – 2."
+                },
+                {
+                    "alt": "b", "op": "1 – 2 – 1."
+                },
+                {
+                    "alt": "c", "op": "1 – 2 – 2."
+                },
+                {
+                    "alt": "d", "op": "2 – 1 – 1."
+                },
+                {
+                    "alt": "e", "op": "2 – 2 – 1."
+                }
+            ],
+            "resposta": 4
+        },
+        {
+            "numQuest": 9,
+            "topico": "SISTEMAS OPERACIONAIS",
+            "enunciado": "Sobre a virtualização de desktops, é INCORRETO afirmar que:",
+            "alternativas": [
+                {
+                    "alt": "a", "op": " Os custos com estrutura física e consumo de energia são maiores em comparação à utilização de estações de trabalho convencionais."
+                },
+                {
+                    "alt": "b", "op": "As aplicações rodam em máquinas virtuais isoladas, compartilhando os mesmos recursos de hardware."
+                },
+                {
+                    "alt": "c", "op": "Cada usuário utiliza seu próprio sistema operacional como se estivesse usando uma estação desktop convencional."
+                },
+                {
+                    "alt": "d", "op": "Nenhuma das máquinas virtuais pode utilizar mais recursos do que foi estipulado para ela no servidor."
+                },
+                {
+                    "alt": "e", "op": "O processamento de uma máquina virtual não afeta o desempenho de outra no servidor."
+                }
+            ],
+            "resposta": 0
+        },
+
+        {
+            "numQuest": 10,
+            "topico": "CSS",
+            "enunciado": "Numa codificação CSS, a propriedade z-index refere-se",
+            "alternativas" : [
+                {
+                    "alt": "a", "op": " à ordem de um elemento numa pilha."
+                },
+                {
+                    "alt": "b", "op": "à ordenação crescente de uma lista de elementos."
+                },
+                {
+                    "alt": "c", "op": "à ordenação decrescente de uma lista de elementos."
+                },
+                {
+                    "alt": "d", "op": "ao valor zero em medidas de altura."
+                },
+                {
+                    "alt": "e", "op": "ao valor zero em medidas de largura."
+                }
+            ],
+            "resposta": 0
+        }
+    ]
+}

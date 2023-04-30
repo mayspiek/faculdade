@@ -1,0 +1,42 @@
+
+Atividade prática: Exceptions
+Entregar via moodle (aguardar criação da disciplina)
+
+Fazer um programa java que solicite ao usuário o nome de um arquivo e exiba seu conteúdo na tela, considerando as seguintes regras:
+
+1- O arquivo deve ter uma lista de nomes de clientes e suas respectivas datas de realização de pedido (formato csv com 2 campos).
+
+2- Exibir na tela o nome do cliente e a data limite de entrega do pedido, levando em conta que o tempo de entrega é de até 7 dias.
+
+3- O formato das datas de entrada e saída deve ser dd/mm/aaaa.
+
+4-Caso não exista o arquivo, capturar a exceção e exibir mensagem amigável para o usuário. 
+
+5-Se alguma data for inválida, capturar a exceção e exibir mensagem amigável para o usuário. 
+
+6-Se o arquivo estiver vazio, lançar exceção personalizada. Ao capturar exceção a exibir mensagem amigável para o usuário. 
+
+7-Se for outra exceção dar mensagem genérica amigável.
+
+
+-Observar a boa prática de centralizar o gerenciamento de mensagens de exceção quando possível.
+-Observar o bom uso dos conceitos de OO.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Futuramente fazer atividade de csv com swing
+Compilação, execução e debug no vscode
+
+
+

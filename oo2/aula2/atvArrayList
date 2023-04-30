@@ -1,0 +1,14 @@
+Crie um programa para uma empresa de assistência técnica de informática, que permite gerenciar os clientes e seus orçamentos. 
+
+O programa deve ter um ArrayList de clientes, e cada cliente deve ter como um de seus atributos um ArrayList de orçamentos.
+
+
+
+O menu deve ter as seguintes opções:
+
+-Cadastrar cliente
+
+-Listar clientes
+
+-Cadastrar orçamento para um cliente
+

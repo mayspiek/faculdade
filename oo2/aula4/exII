@@ -1,0 +1,12 @@
+Exercício 2 HashMap e Arraylist:
+
+Crie um programa que solicite o nome e a data de aniversário de um usuário (dd/mm), e guarde em um HashMap.
+
+Como podem haver vários aniversariantes na mesma data, cada elemento do HashMap deve ter como chave a data e como valor um Arraylist de String, onde serão armazenados os nomes dos aniversariantes.
+
+Deve ser possível:
+
+-Adicionar aniversariante
+
+-Listar as datas que contém aniversariantes
+
