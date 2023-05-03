@@ -34,10 +34,10 @@ public class GerenciadorClientePj {
                     this.cadastrar();
                     break;
                 case 2:
-                    //this.consultar();
+                    this.consultar();
                     break;
                 case 3:
-                    //this.alterar();
+                    this.alterar();
                     break;
                 case 4:
                     this.excluir();
@@ -84,6 +84,7 @@ public class GerenciadorClientePj {
         System.out.println("----[LISTA DE CLIENTES PJ]----");
         for(ClientePj cpj : cliPJ){
             System.out.println("Código: " + cpj.getCodigoClientePj()
+            + ", Nome: " + cpj.getNome()
             + ", CNPJ: " + cpj.getCnpj()
             + ", Rua: " + cpj.getEnderecoPj().getRua() 
             + ", Numero: " + cpj.getEnderecoPj().getNumero()
@@ -104,72 +105,93 @@ public class GerenciadorClientePj {
         }
     }
 
-    // public void consultar(){
-    //     System.out.println("----[CONSULTA DE CLIENTES PJ]----");
-    //     System.out.println("\nCódigo: ");
-    //     int codigo = Integer.parseInt(scanner.nextLine());
-    //     Veiculo v = daoPj.consultar(codigo);
-    //     if(v != null){
-    //         System.out.println("\n----[Dados do veículo]----");
-    //         System.out.println("- Código: " + v.getCodigo());
-    //         System.out.println("- Marca: " + v.getMarca());
-    //         System.out.println("- Modelo: " + v.getModelo());
-    //         System.out.println("- Chassi: " + v.getChassi());
-    //         System.out.println("- Ano: " + v.getAno());
-    //     }else{
-    //         System.out.println("\nNão encontrado...");
-    //     }
-    // }
+    public void consultar(){
+        System.out.println("----[CONSULTA DE CLIENTES PJ]----");
+        System.out.println("\nCódigo: ");
+        int codigo = Integer.parseInt(scanner.nextLine());
+        ClientePj cPj = daoPj.consultar(codigo);
+        if(cPj != null){
+            System.out.println("\n----[Dados do Cliente]----");
+            System.out.println("- Código: " + cPj.getCodigoClientePj());
+            System.out.println("- Nome: " + cPj.getNome());
+            System.out.println("- CNPJ: " + cPj.getCnpj());
+
+            System.out.println("----[Dados do endereço do Cliente PJ]----");
+            System.out.println("- Rua: " + cPj.getEnderecoPj().getRua());
+            System.out.println("- Numero: " + cPj.getEnderecoPj().getNumero());
+            System.out.println("- Bairro: " + cPj.getEnderecoPj().getBairro());
+            System.out.println("- CEP: " + cPj.getEnderecoPj().getCep());
+        }else{
+            System.out.println("\nNão encontrado...");
+        }
+    }
 
     
-    // public void alterar(){
-    //     System.out.println("----[ALTERAÇÃO DE CLIENTES PJ]----");
-    //     System.out.println("Código: ");
-    //     int codigo = Integer.parseInt(scanner.nextLine());
-    //     Veiculo v = daoPj.consultar(codigo);
-    //     if(v!=null){
-    //         System.out.println("\n----[Dados do veículo]----");
-    //         System.out.println("[Código: " + v.getCodigo() + "]");
+    public void alterar(){
+        System.out.println("----[ALTERAÇÃO DE CLIENTES PJ]----");
+        System.out.println("Código: ");
+        int codigo = Integer.parseInt(scanner.nextLine());
+        ClientePj cPj = daoPj.consultar(codigo);
+        if(cPj!=null){
+            System.out.println("\n----[Dados do Cliente PJ]----");
+            System.out.println("[Código: " + cPj.getCodigoClientePj() + "]");
             
-    //         System.out.println("[Marca: " + v.getMarca() + "]");
-    //         String marca = scanner.nextLine();
-    //         if(marca.isEmpty()){
-    //             v.setModelo(v.getModelo());
-    //         } else{
-    //             v.setModelo(marca);
-    //         }
+            System.out.println("[Nome: " + cPj.getNome() + "]");
+            String nome = scanner.nextLine();
+            if(nome.isEmpty()){
+                cPj.setNome(cPj.getNome());
+            } else{
+                cPj.setNome(nome);
+            }
             
-    //         System.out.println("[Modelo: " + v.getModelo() + "]");
-    //         String modelo = scanner.nextLine();
-    //         if(modelo.isEmpty()){
-    //             v.setModelo(v.getModelo());
-    //         } else {
-    //             v.setModelo(modelo);
-    //         }
+            System.out.println("[CNPJ: " + cPj.getCnpj() + "]");
+            String cnpj = scanner.nextLine();
+            if(cnpj.isEmpty()){
+                cPj.setCnpj(cPj.getCnpj());
+            } else {
+                cPj.setCnpj(cnpj);
+            }
             
-    //         System.out.println("[Chassi: " + v.getChassi() + "]");
-    //         String chassi = scanner.nextLine();
-    //         if(chassi.isEmpty()){
-    //             v.setChassi(v.getChassi());
-    //         }else {
-    //             v.setModelo(chassi);
-    //         }
+            System.out.println("----[Dados do endereço do Cliente PJ]----");
+            System.out.println("[Rua: " + cPj.getEnderecoPj().getRua() + "]");
+            String rua = scanner.nextLine();
+            if(rua.isEmpty()){
+                cPj.getEnderecoPj().setRua(cPj.getEnderecoPj().getRua());
+            }else {
+                cPj.getEnderecoPj().setRua(rua);
+            }
             
-    //         System.out.println("[Ano: " + v.getAno() + "]");
-    //         String ano = scanner.nextLine();
-    //         if(ano.isEmpty()){
-    //             v.setAno(v.getAno());
-    //         } else {
-    //             v.setAno(Integer.parseInt(ano));
-    //         }
+            System.out.println("[Numero: " + cPj.getEnderecoPj().getNumero() + "]");
+            String numero = scanner.nextLine();
+            if(numero.isEmpty()){
+                cPj.getEnderecoPj().setNumero(cPj.getEnderecoPj().getNumero());
+            } else {
+                cPj.getEnderecoPj().setNumero(Integer.parseInt(numero));
+            }
+
+            System.out.println("[Bairro: " + cPj.getEnderecoPj().getNumero() + "]");
+            String bairro = scanner.nextLine();
+            if(bairro.isEmpty()){
+                cPj.getEnderecoPj().setBairro(cPj.getEnderecoPj().getBairro());
+            } else {
+                cPj.getEnderecoPj().setBairro(bairro);
+            }
+
+            System.out.println("[CEP: " + cPj.getEnderecoPj().getCep() + "]");
+            String cep = scanner.nextLine();
+            if(cep.isEmpty()){
+                cPj.getEnderecoPj().setCep(cPj.getEnderecoPj().getCep());
+            } else {
+                cPj.getEnderecoPj().setCep(cep);
+            }
                       
-    //         int qtdeAlterado = daoPj.alterar(v);
-    //         if(qtdeAlterado > 0){
-    //             System.out.println("\nAtualizado com sucesso.");
-    //         }
-    //     }else{
-    //         System.out.println("\nNão encontrado...");
-    //     }
-    // }
+            int qtdeAlterado = daoPj.alterar(cPj);
+            if(qtdeAlterado > 0){
+                System.out.println("\nAtualizado com sucesso.");
+            }
+        }else{
+            System.out.println("\nNão encontrado...");
+        }
+    }
 
 }

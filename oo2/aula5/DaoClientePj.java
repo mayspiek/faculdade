@@ -72,7 +72,7 @@ public class DaoClientePj {
             this.conectar();
             ResultSet rs = st.executeQuery(
                     "SELECT * FROM tb_clientes_pj as c, tb_enderecos_pj as e WHERE c.cod_cli_pj = e.cod_cli_pj ORDER BY c.nome;");
-            if (rs.next()) {
+            while(rs.next()) {
                 ClientePj cPj = new ClientePj();
                 cPj.setCodigoClientePj(rs.getInt("cod_cli_pj"));
                 cPj.setNome(rs.getString("nome"));
@@ -99,10 +99,16 @@ public class DaoClientePj {
         int qtde = 0;
         try {
             this.conectar();
-            String comando = "DELETE FROM tb_clientes_pj WHERE cod_cli_pj = "
-                    + cod + ";";
-            st.executeUpdate(comando);
-            qtde = st.getUpdateCount();
+            PreparedStatement pstEnd = conn.prepareStatement("DELETE FROM tb_enderecos_pj WHERE cod_cli_pj = ?");
+            pstEnd.setInt(1, cod);
+            pstEnd.executeUpdate();
+
+            PreparedStatement pstCli = conn.prepareStatement(
+                "DELETE FROM tb_clientes_pj WHERE cod_cli_pj = ? ");
+            pstCli.setInt(1, cod);
+            pstCli.executeUpdate();
+
+            qtde = pstCli.getUpdateCount();
         } catch (Exception e) {
             System.out.println("Erro: " + e.getMessage());
         } finally {
@@ -110,4 +116,59 @@ public class DaoClientePj {
         }
         return qtde;
     }
+
+    public ClientePj consultar(int cod){
+        ClientePj cPj = null;
+        EnderecoPj endPj = null;
+        try {
+            this.conectar();
+            ResultSet rs = st.executeQuery("SELECT * FROM tb_clientes_pj as c, tb_enderecos_pj as e WHERE c.cod_cli_pj = e.cod_cli_pj AND c.cod_cli_pj = " + cod + ";");
+            if(rs.next()){
+                cPj = new ClientePj();
+                cPj.setCodigoClientePj(rs.getInt("cod_cli_pj"));
+                cPj.setNome(rs.getString("nome"));
+                cPj.setCnpj(rs.getString("cnpj"));
+
+                endPj = new EnderecoPj();
+                endPj.setCodigo(rs.getInt("cod_end"));
+                endPj.setRua(rs.getString("rua"));
+                endPj.setNumero(rs.getInt("numero"));
+                endPj.setBairro(rs.getString("bairro"));
+                endPj.setCep(rs.getString("cep"));
+
+                cPj.setEnderecoPj(endPj);
+            }
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        } finally{
+            this.desconectar();
+        }
+        return cPj;
+    }  
+    
+    public int alterar(ClientePj cPj){
+        int qtde = 0;
+        try {
+            this.conectar();
+            PreparedStatement pstCli = conn.prepareStatement("UPDATE tb_clientes_pj SET nome = ?, cnpj = ? WHERE cod_cli_pj = ?;");
+            pstCli.setString(1, cPj.getNome());
+            pstCli.setString(2, cPj.getCnpj());
+            pstCli.setInt(3, cPj.getCodigoClientePj());
+  
+            PreparedStatement pstEnd = conn.prepareStatement("UPDATE tb_enderecos_pj SET rua = ?, numero = ?, bairro = ?, cep = ? WHERE cod_cli_pj = ?;");
+            pstEnd.setString(1, cPj.getEnderecoPj().getRua());
+            pstEnd.setInt(2, cPj.getEnderecoPj().getNumero());
+            pstEnd.setString(3, cPj.getEnderecoPj().getBairro());
+            pstEnd.setString(4, cPj.getEnderecoPj().getCep());
+
+            qtde = pstCli.getUpdateCount();
+           
+        } catch (Exception e) {
+            System.out.println("Erro: " + e.getMessage());
+        } finally{
+            this.desconectar();
+        }
+        return qtde;  
+    }
+
 }

@@ -1,0 +1,35 @@
+1) Livros com mais de 1092 (paginas)
+
+2) Listar todas as categorias existentes
+
+3) Listar os tipos de status
+
+4) Listar os 5 livros com o maior número de páginas:
+
+5) Encontrar livros sobre COBOL
+
+6) Livros que contém no título a palavra "Development" com data de publicação a partir de 2000:
+
+7) Livros publicados anteriores a 1995
+
+8) Total de livros publicados no ano 2000
+
+9) Qual o livro publicado mais recentemente?
+
+10) Contém a palavra "Debugger" na descrição
+
+11) Qual o livro com o menor número de páginas?
+
+12) Qual o livro publicado mais antigo?
+
+13) Livros com 3 ou mais autores
+
+14) Contem o termo "Java" e foi publicado a partir de 2013.
+
+15) Livros que contém a categoria "Networking"
+
+16) Livros que contém a categoria "Networking" publicados depois do ano 2000:
+
+17) Total de livros na categoria networking?
+
+18) Sumarizar o total de livros por categoria
