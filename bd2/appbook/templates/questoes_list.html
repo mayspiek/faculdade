@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+{% block content %}
+<main>
+
+    <ul class="page-nav">
+        <li>
+            <a class="btn btn-outline-success" href="{{ url_for('questoes_novo') }}">Cadastro</a>
+        </li>
+    </ul>
+
+    <h2>Lista de Questões</h2>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Num Questão</th>
+                <th>Topico</th>
+                <th>Enunciado</th>
+                <th>Alternativas</th>
+                <th>Resposta</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for questao in questoes %}
+            <tr>
+                <td>{{questao.numQuest}}</td>
+                <td>
+                {% for topicos in questao.topico %}
+                    {{topicos}}
+                    {% endfor %}
+                </td>
+                <td>{{questao.enunciado}}</td>
+                <td>
+                {% for alternativa in questao.alternativas %}
+                    <ul>
+                            {{alternativa.alt}}<span>)</span>
+                            {{alternativa.op}}
+                            <br>
+                    </ul>
+                    {% endfor %}
+                </td>
+                <td>
+                    {% for alternativa in questao.alternativas %}
+                        {% if loop.index == questao.resposta %}
+                            {{alternativa.alt}}
+                        {% endif %}
+                    {% endfor %}
+                </td>
+                <td class="actions">
+                    <a title="editar" class="btn btn-warning" 
+                    href="">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                    <a title="deletar" class="btn btn-danger" href="{{ url_for('questoes_delete', id=questao._id) }}">
+                        <i class="bi bi-x-circle"></i>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</main>
+
+{% endblock %}

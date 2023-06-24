@@ -1,0 +1,52 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<ul class="page-nav">
+    <li>
+        <a class="btn btn-outline-success" href="{{ url_for('questoes_index') }}">Listar</a>
+    </li>
+</ul>
+
+{% if questao %}
+    <h1><u>Atualizar</u> Questão</h1>
+{% else %}
+    <h1>Cadastro Questão</h1>
+{% endif %}
+
+
+<form class="crud c2" action="/questoes/{{action}}" method="POST">
+
+    <div class="form-group">
+        <label for="numQuest">Num Questão</label>
+        <input value="{{questoes.numQuest}}" type="text" class="form-control" name="numQuest" id="numQuest" required autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label for="enunciado">Enunciado</label>
+        <input value="{{questoes.enunciado}}" type="text" class="form-control" name="enunciado" id="enunciado" required autocomplete="off">
+    </div>
+    
+    <div class="form-group">
+        <label for="topico">Tópicos</label>
+        <input value="{{questoes.topico}}" type="text" class="form-control" name="topico" id="topico" required autocomplete="off">
+    </div>
+    
+    <div class="form-group">
+        <label for="alternativas">Alternativas</label>
+        <input value="{{questoes.alternativas}}" type="text" class="form-control" name="alternativas" id="alternativas" required autocomplete="off">
+    </div>
+
+    <div class="form-group">
+        <label for="resposta">Resposta</label>
+        <input value="{{questoes.resposta}}" type="number" class="form-control" name="resposta" id="resposta" required autocomplete="off">
+    </div>
+
+    {% if questao %}
+    <button type="submit" class="btn btn-danger">Atualizar</button>
+    {% else %}
+    <button type="submit" class="btn btn-primary">Cadastrar</button>
+    {% endif %}
+
+</form>
+
+{% endblock %}
