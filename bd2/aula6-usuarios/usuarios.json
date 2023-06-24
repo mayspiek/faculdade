@@ -1,0 +1,47 @@
+[
+  {
+    "usuario": {
+      "nome": "João",
+      "email": "joao@example.com",
+      "pais": "Brasil",
+      "acessos": 10
+    },
+    "tarefas": [
+      {
+        "titulo": "Tarefa 1",
+        "tags": ["ifpr", "no-sql"],
+        "status": "concluída"
+      }
+    ]
+  },
+  {
+    "usuario": {
+      "nome": "Maria",
+      "email": "maria@example.com",
+      "pais": "EUA",
+      "acessos": 5
+    },
+    "tarefas": [
+      {
+        "titulo": "Tarefa 2",
+        "tags": ["javascript"],
+        "status": "pendente"
+      }
+    ]
+  },
+  {
+    "usuario": {
+      "nome": "Pedro",
+      "email": "pedro@example.com",
+      "pais": "França",
+      "acessos": 3
+    },
+    "tarefas": [
+      {
+        "titulo": "Tarefa 3",
+        "tags": ["no-sql"],
+        "status": "pendente"
+      }
+    ]
+  }
+]
