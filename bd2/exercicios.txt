@@ -1,6 +1,0 @@
-Usando agregação, respondaa
-1) Qual o livro com 
-a)maior quantidade de paginas 
-b)menor quantidade de paginas
-
-2) Total de livros com as categorias networking e Java
