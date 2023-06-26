@@ -13,32 +13,31 @@
     <h1>Cadastro Questão</h1>
 {% endif %}
 
-
 <form class="crud c2" action="/questoes/{{action}}" method="POST">
 
     <div class="form-group">
         <label for="numQuest">Num Questão</label>
-        <input value="{{questoes.numQuest}}" type="text" class="form-control" name="numQuest" id="numQuest" required autocomplete="off">
+        <input value="{{questao.numQuest}}" type="text" class="form-control" name="numQuest" id="numQuest" required autocomplete="off">
     </div>
 
     <div class="form-group">
         <label for="enunciado">Enunciado</label>
-        <input value="{{questoes.enunciado}}" type="text" class="form-control" name="enunciado" id="enunciado" required autocomplete="off">
+        <input value="{{questao.enunciado}}" type="text" class="form-control" name="enunciado" id="enunciado" required autocomplete="off">
     </div>
     
     <div class="form-group">
-        <label for="topico">Tópicos</label>
-        <input value="{{questoes.topico}}" type="text" class="form-control" name="topico" id="topico" required autocomplete="off">
+        <label for="topico">Tópicos*</label>
+        <input value="{{questao.topico}}" type="text" class="form-control" name="topico" id="topico" required autocomplete="off">
     </div>
     
     <div class="form-group">
-        <label for="alternativas">Alternativas</label>
-        <input value="{{questoes.alternativas}}" type="text" class="form-control" name="alternativas" id="alternativas" required autocomplete="off">
+        <label for="alternativas">Alternativas*</label>
+        <input value="{{questao.alternativas}}" type="text" class="form-control" name="alternativas" id="alternativas" required autocomplete="off">
     </div>
 
     <div class="form-group">
-        <label for="resposta">Resposta</label>
-        <input value="{{questoes.resposta}}" type="number" class="form-control" name="resposta" id="resposta" required autocomplete="off">
+        <label for="resposta">Resposta**</label>
+        <input value="{{questao.resposta}}" type="number" class="form-control" name="resposta" id="resposta" required autocomplete="off">
     </div>
 
     {% if questao %}
@@ -46,7 +45,9 @@
     {% else %}
     <button type="submit" class="btn btn-primary">Cadastrar</button>
     {% endif %}
-
+    <p>* - Tópicos e alternativas utilizar APENAS "," para separação de várias opções</p>
+    <p>** - Resposta colocar o número equivalente a ordem das alternativas inseridas. Ex: "Opção1, Opção2, Opção3, Opção4, Opção5" - Resposta: 1 = (Opção1) </p>
+    
 </form>
 
 {% endblock %}
