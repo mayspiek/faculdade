@@ -36,19 +36,20 @@ def questoes_index():
     col = get_collection()
     res = col.find().sort('numQuest')
     questoes = list(res)
+
     return render_template("questoes_list.html", questoes=questoes)
 
 
 # ROTA DO FORM
 @app.route("/questoes/novo", methods=["GET"])
 def questoes_novo():
-    return render_template("questoes.html", action='inserir', questoes=None)
+    return render_template("questoes.html", action='inserir', questao=None)
 
 @app.route("/questoes/editar/<id>", methods=["GET"])
 def questoes_editar(id):
     collection = get_collection()
-
-    questoes = list(collection.find({"_id": ObjectId(id)}))
+    objId = ObjectId(id)
+    questoes = list(collection.find({"_id": objId}))
 
 
     for questao in questoes:
@@ -77,16 +78,12 @@ def questoes_editar(id):
         questao['topico'] = topicos_str
 
         
-    return render_template("questoes.html", action='editar', questao=questao)
+    return render_template("questoes.html", action='edit', questao=questao)
 
 # INSERT = insertOne
 @app.route("/questoes/inserir", methods=["POST"])
 def inserir_questoes():
     col = get_collection()
-
-    # CRIA DE MANEIRA ESTATICA A NUMERAÇAO PRAS ALTEERNATIVAS
-    alt = ['a', 'b', 'c', 'd', 'e']
-
     # PEGA O VALOR INSERIDO NO FORM
     numQuestao = request.form.get('numQuest')
     enunciado = request.form.get('enunciado')
@@ -104,6 +101,8 @@ def inserir_questoes():
     resposta = int(request.form.get('resposta'))
 
     # FAZ UM ARRAY DE ALTERNATIVAS POIS SÃO VÁRIAS ALTERNATIVAS
+    alt = ['a', 'b', 'c', 'd', 'e']
+
     alternativas = []
     for i, op in enumerate(alternativas_list):
         alternativa = {"alt": alt[i], "op": op}
@@ -140,31 +139,50 @@ def questoes_delete(id):
     return redirect(url_for('questoes_index'))
 
 # UPDATE = updateOne
-@app.route("/questoes/edit/", methods=["POST"])
+@app.route("/questoes/edit", methods=["POST"])
 def questoes_edit():
     collection = get_collection()
     
     id = request.form.get('id')
-
+    objId = ObjectId(id)
 
     numQuest = request.form.get('numQuest')
     enunciado = request.form.get('enunciado')
-    topicos = request.form.get('topico')
-    alternativas = request.form.get('alternativas')
+    topicos_str = request.form.get('topico')
+    alternativas_str = request.form.get('alternativas')
     resposta = request.form.get('resposta')
 
-    result = collection.update_one({"_id": ObjectId(id)}, {"$set": {
+    alternativas = []
+    if topicos_str and alternativas_str is not None and alternativas_str and topicos_str != "": 
+        topicos = topicos_str.split(',')
+        alternativas_list = alternativas_str.split(',')
+
+    alt = ['a', 'b', 'c', 'd', 'e']
+
+     # Itera sobre a lista alternativas_str e criar as alternativas
+    for i, alt_str in enumerate(alternativas_list):
+        alternativa = {"alt": alt[i], "op": alt_str.strip()}
+        alternativas.append(alternativa)
+
+
+    questao = {
+        '$set': {
             "numQuest": numQuest,
             "enunciado": enunciado,
-            "topicos": topicos,
+            "topico": topicos,
             "alternativas": alternativas,
-            "resposta": resposta
-        }})
+            "resposta": int(resposta)
+        }
+    }
+
+    result = collection.update_one({"_id": objId}, questao)
     
+    print(result)
     if result.modified_count > 0:
-        flash(f'Questão atualizada com sucesso!', 'success')
-    else: 
-        flash(f'Erro ao atualizar questão!', 'danger')
+        print(f'Questão alterada com sucesso!', 'success')
+    else:
+        print(f"Erro ao alterar questão.", 'danger')
+
 
     return redirect(url_for('questoes_index'))
 
