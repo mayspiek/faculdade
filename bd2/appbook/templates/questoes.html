@@ -14,6 +14,7 @@
 {% endif %}
 
 <form class="crud c2" action="/questoes/{{action}}" method="POST">
+    <input type="hidden" value="{{questao._id}}" name="id">
 
     <div class="form-group">
         <label for="numQuest">Num Questão</label>

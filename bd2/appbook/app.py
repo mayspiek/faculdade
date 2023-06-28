@@ -49,7 +49,7 @@ def questoes_novo():
 def questoes_editar(id):
     collection = get_collection()
     objId = ObjectId(id)
-    questoes = list(collection.find({"_id": objId}))
+    questoes = collection.find({"_id": objId})
 
 
     for questao in questoes:
@@ -179,14 +179,35 @@ def questoes_edit():
     
     print(result)
     if result.modified_count > 0:
-        print(f'Questão alterada com sucesso!', 'success')
+        flash(f'Questão alterada com sucesso!', 'success')
     else:
-        print(f"Erro ao alterar questão.", 'danger')
+        flash(f"Erro ao alterar questão.", 'danger')
 
 
     return redirect(url_for('questoes_index'))
 
+# BUSCA
+@app.route("/questoes/busca", methods=["GET", "POST"])
+# método para fazer a busca
+def questao_busca():
+    # cria a variavel fora do if
+    resultados = []
+    if request.method == "POST":
+        col = get_collection()
+        questao = request.form.get("questaoBusca")
+        # recebe uma string para procurar no banco de dados algum documento que combina
+        questao = str(questao)  # Converta para string, se necessário
+        res = col.find({ "$or" :[
+            {"enunciado": {"$regex": questao, "$options" :"i" }},
+            {"topico": {"$regex": questao, "$options" :"i" }},
+            {"alternativa": {"$regex": questao, "$options" :"i" }}
+            ] }).sort('numQuest')
+        resultados = list(res)
+        # cursor é um iterador, e é o que retorna do find
+        # resultados é um vetor e vai receber um cursor que foi convertido em uma lista
 
+    return render_template("questoes_list.html", questoes=resultados)
+    
 
 if __name__ == "__main__":
     app.run(debug=True)

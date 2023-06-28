@@ -1,14 +1,23 @@
 {% extends "layout.html" %}
 {% block content %}
 <main>
-
     <ul class="page-nav">
-        <li>
-            <a class="btn btn-outline-success" href="{{ url_for('questoes_novo') }}">Cadastro</a>
+        <li style="width: 100vw;">
+            <form  class="d-flex" role="search" method="POST" action="/questoes/busca">
+                
+                <input type="search" style="align-self: end;" class="form-control me-2" name="questaoBusca" id="questaoBusca"
+                placeholder="Pesquisar">
+                
+                <button type="submit" class="btn btn-outline-success" title="pesquisar" class="btn btn-primary"
+                href="{{ url_for('questao_busca', questaoBusca = questaoBusca) }}">
+                Pesquisar
+            </button>
+            <a class="btn btn-outline-success" style="margin-left: 7rem; width: 40%;" href="{{ url_for('questoes_novo') }}">Cadastro</a>
+        </form>
         </li>
     </ul>
 
-    <h2>Lista de Questões</h2>
+    <h2>Lista de Questoes</h2>
 
     <table class="table table-hover">
         <thead>
@@ -23,7 +32,6 @@
         <tbody>
             {% for questao in questoes %}
             <tr>
-                <td style="display:none">{{questao._id}}</td>
                 <td>{{questao.numQuest}}</td>
                 <td>
                     {% for topicos in questao.topico %}
