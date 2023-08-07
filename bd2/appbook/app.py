@@ -110,7 +110,7 @@ def inserir_questoes():
 
 
     questao = {
-        "numQuest": numQuestao,
+        "numQuest": int(numQuestao),
         "enunciado": enunciado,
         "topico": topicos_list,
         "alternativas": alternativas,
@@ -167,7 +167,7 @@ def questoes_edit():
 
     questao = {
         '$set': {
-            "numQuest": numQuest,
+            "numQuest": int(numQuest),
             "enunciado": enunciado,
             "topico": topicos,
             "alternativas": alternativas,
