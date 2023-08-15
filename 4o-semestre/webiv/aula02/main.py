@@ -1,7 +1,7 @@
 from datetime import datetime
 import locale
 from fastapi import FastAPI
-import pytz
+import pytz, json
 
 app = FastAPI()
 
@@ -67,6 +67,7 @@ def pegaDiaSemana(date: str):
         diaSemana = date_obj.strftime('%A')
 
         return {"dia-da-semana": diaSemana}
+
 
 #iniciar o wervidor web
 #uvicorn main:app --reload
