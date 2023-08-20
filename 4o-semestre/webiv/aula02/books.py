@@ -21,23 +21,31 @@ def busca_id(id: int):
 # 2. Busca por ano
 @app.get("/book/ano/{ano}")
 def busca_ano(ano: int):
+    livros = []
     with open('books.json', 'r') as f:
         books = json.load(f)
         for book in books:
             if book['year'] == ano:
-
-                return book
+                livros.append(book)
+    if livros == [] or livros == None:
         return {"erro": "livro não encontrado"}
+    else:
+        return livros
     
 # 3. Busca por título
 @app.get("/book/titulo/{titulo}")
 def busca_titulo(titulo: str):
     with open('books.json', 'r') as f:
         books = json.load(f)
+        livros = []
         for book in books:
-            if titulo in book['title']:
-                return book
+            if titulo.lower() in book['title'].lower():
+                print("TITULO: " + titulo)
+                livros.append(book)
+    if livros == [] or livros == None:
         return {"erro": "livro não encontrado"}
+    else:
+        return livros
 
 # 4. Busca por authors
 @app.get("/book/autor/{autor}")
@@ -47,8 +55,9 @@ def busca_autor(autor: str):
         livros = []
         for book in books:
             for autores in book['authors']:
-                if autor in autores:
+                if autor.lower() in autores.lower():
                     livros.append(book)
-                    print(livros)
-                    return livros
-        return {"erro": "livro não encontrado"}
+        if livros == []:
+            return {"erro": "livro não encontrado"}
+        else:
+            return livros
